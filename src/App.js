@@ -1,7 +1,8 @@
 
 import {useState} from "react";
 import React from "react"
-import {Button, Container, Row} from 'react-bootstrap';
+import {Button, Container, Row,} from 'react-bootstrap';
+
 import ReactJkMusicPlayer from 'react-jinke-music-player'
 import 'react-jinke-music-player/assets/index.css'
 import "./styles.css";
@@ -76,7 +77,7 @@ const playListRelax = [
     cover:
       '',
     musicSrc:
-      'http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3',
+      'https://res.cloudinary.com/gwillig/video/upload/v1629029134/music/relax.mp3',
   },
 ]
 
@@ -99,17 +100,20 @@ class App extends React.Component{
         return (
             <div className="App">
              <Container fluid className="align-middle " >
-                 <Row className="justify-content-md-center">
+                 <Row className="justify-content-center m-3">
+                     <h1 className="display-3" style={{color:"white"}}>My Music</h1>
+                 </Row>
+                 <Row className="justify-content-center">
                      <Button type="button" onClick={()=>this.onChangePlayList(playListFocus)}>
                         Playlist: Focus
                   </Button>
                  </Row>
-                  <Row className="justify-content-md-center p-3">
+                  <Row className="justify-content-center p-3">
                      <Button type="button" onClick={()=>this.onChangePlayList(playListSleep)}>
                         Playlist: Sleep
                   </Button>
                  </Row>
-                  <Row className="justify-content-md-center" p-3>
+                  <Row className="justify-content-center" p-3>
                      <Button type="button" onClick={()=>this.onChangePlayList(playListRelax)}>
                         Playlist: Relax
                   </Button>
