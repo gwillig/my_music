@@ -100,7 +100,7 @@ class App extends React.Component{
         return (
             <div className="App">
              <Container fluid className="align-middle " >
-                 <Row className="justify-content-center m-3">
+                 <Row className="justify-content-center p-3">
                      <h1 className="display-3" style={{color:"white"}}>My Music</h1>
                  </Row>
                  <Row className="justify-content-center">
