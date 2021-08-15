@@ -125,7 +125,7 @@ class App extends React.Component{
                  clearPriorAudioLists={true}
                  quietUpdate="false"
                  autoPlay="false"
-                 mode="full"
+                 mode="mini"
                  audioLists={audioList}/>
             </div>
       )
