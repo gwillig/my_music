@@ -99,21 +99,21 @@ class App extends React.Component{
         const {audioList} = this.state
         return (
             <div className="App">
-             <Container fluid className="align-middle " >
-                 <Row className="justify-content-center p-3">
+             <Container  className="align-middle " >
+                 <Row className="justify-content-center pt-3">
                      <h1 className="display-3" style={{color:"white"}}>My Music</h1>
                  </Row>
-                 <Row className="justify-content-center">
+                 <Row className="justify-content-center pt-3">
                      <Button type="button" onClick={()=>this.onChangePlayList(playListFocus)}>
                         Playlist: Focus
                   </Button>
                  </Row>
-                  <Row className="justify-content-center p-3">
+                  <Row className="justify-content-center pt-3">
                      <Button type="button" onClick={()=>this.onChangePlayList(playListSleep)}>
                         Playlist: Sleep
                   </Button>
                  </Row>
-                  <Row className="justify-content-center" p-3>
+                  <Row className="justify-content-center pt-3">
                      <Button type="button" onClick={()=>this.onChangePlayList(playListRelax)}>
                         Playlist: Relax
                   </Button>
