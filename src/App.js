@@ -2,10 +2,14 @@
 import {useState} from "react";
 import React from "react"
 import {Button, Container, Row,} from 'react-bootstrap';
-
+import axios from "axios";
 import ReactJkMusicPlayer from 'react-jinke-music-player'
 import 'react-jinke-music-player/assets/index.css'
 import "./styles.css";
+import {GET_DATA} from "./BACKEND_URLS"
+
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 
 const playListFocus = [
@@ -87,44 +91,55 @@ class App extends React.Component{
     constructor() {
         super();
         this.onChangePlayList = this.onChangePlayList.bind(this)
+        this.handleFetch = this.handleFetch.bind(this)
         this.state={
-            audioList: playListFocus
+            audioList: playListFocus,
+            MusicRecord:{}
         }
     }
       onChangePlayList = (playListName) => {
+        debugger
             this.setState({audioList:playListName})
       }
-  render(){
+      handleFetch = ( ) => {
 
-        const {audioList} = this.state
+          	axios
+                .get(GET_DATA)
+                .then(res => {
+                    this.setState({MusicRecord:res.data})
+                });
+
+      }
+      componentDidMount() {
+        this.handleFetch()
+
+      }
+
+    render(){
+        const {audioList, MusicRecord} = this.state
         return (
             <div className="App">
              <Container  className="align-middle " >
                  <Row className="justify-content-center pt-3">
                      <h1 className="display-3" style={{color:"white"}}>My Music</h1>
                  </Row>
-                 <Row className="justify-content-center pt-3">
-                     <Button type="button" onClick={()=>this.onChangePlayList(playListFocus)}>
-                        Playlist: Focus
-                  </Button>
-                 </Row>
-                  <Row className="justify-content-center pt-3">
-                     <Button type="button" onClick={()=>this.onChangePlayList(playListSleep)}>
-                        Playlist: Sleep
-                  </Button>
-                 </Row>
-                  <Row className="justify-content-center pt-3">
-                     <Button type="button" onClick={()=>this.onChangePlayList(playListRelax)}>
-                        Playlist: Relax
-                  </Button>
-                 </Row>
+                 {
+                     Object.keys(MusicRecord).map(el=>{
+                    return(
+                     <Row className="justify-content-center pt-3">
+                         <Button key={el} type="button" onClick={()=>this.onChangePlayList(MusicRecord[el])}>
+                            Playlist: {el}
+                      </Button>
+                     </Row>
+                    )
+                 })}
              </Container>
 
 
              <ReactJkMusicPlayer
                  clearPriorAudioLists={true}
-                 quietUpdate="false"
-                 autoPlay="false"
+                 quietUpdate={false}
+                 autoPlay={false}
                  mode="mini"
                  audioLists={audioList}/>
             </div>

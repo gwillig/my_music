@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.views.generic import TemplateView
 from rest_framework import routers
-from todo import views
+from home import views
 from django.views.generic.base import RedirectView
 from django.contrib.staticfiles.storage import staticfiles_storage
 
@@ -25,16 +25,8 @@ from django.contrib.staticfiles.storage import staticfiles_storage
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html')),
-    path('', include('home.urls')),
-    # Links for pwa
-    path(r'index.html', (TemplateView.as_view(template_name="index.html", content_type='application/html', )),
-        name='index.html'),
-    path('static/', TemplateView.as_view(template_name='index.html')),
-    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico'))),
-    path('manifest.json', RedirectView.as_view(url=staticfiles_storage.url('manifest.json'))),
-    path('static/logo192.png', RedirectView.as_view(url=staticfiles_storage.url('img/logo192.png'))),
-    path('static/logo512.png', RedirectView.as_view(url=staticfiles_storage.url('img/logo512.png'))),
+
+    path("api/data", views.all_record, name="all_records")
+
 ]
 
