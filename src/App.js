@@ -14,18 +14,58 @@ const playListFocus = [
     cover:
       '',
     musicSrc:
-      'https://res.cloudinary.com/gwillig/video/upload/v1629020742/music/focus_4_1.mp3',
+      'https://res.cloudinary.com/gwillig/video/upload/v1629028166/music/focus1.mp3',
+  },
+  {
+    name: 'Focus_2',
+    singer: 'Jay Chou',
+    cover:
+      '',
+    musicSrc:
+      'https://res.cloudinary.com/gwillig/video/upload/v1629028145/music/focus2.mp3',
+  },
+  {
+    name: 'Focus_4',
+    singer: 'Jay Chou',
+    cover:
+      '',
+    musicSrc:
+      'https://res.cloudinary.com/gwillig/video/upload/v1629028137/music/focus_4.mp3',
   },
 ]
 
 const playListSleep= [
   {
-    name: 'Focus_1',
+    name: 'Sleep1',
     singer: 'Jay Chou',
     cover:
       '',
     musicSrc:
-      'https://res.cloudinary.com/gwillig/video/upload/v1629020742/music/focus_4_1.mp3',
+      'https://res.cloudinary.com/gwillig/video/upload/v1629028146/music/sleep1.mp3',
+  },
+  {
+    name: 'Sleep2',
+    singer: 'Jay Chou',
+    cover:
+      '',
+    musicSrc:
+      'https://res.cloudinary.com/gwillig/video/upload/v1629028151/music/sleep2.mp3',
+  },
+  {
+    name: 'Sleep3',
+    singer: 'Jay Chou',
+    cover:
+      '',
+    musicSrc:
+      'https://res.cloudinary.com/gwillig/video/upload/v1629028160/music/sleep3.mp3',
+  },
+  {
+    name: 'Sleep4',
+    singer: 'Jay Chou',
+    cover:
+      '',
+    musicSrc:
+      'https://res.cloudinary.com/gwillig/video/upload/v1629028137/music/focus_4.mp3',
   },
 ]
 
