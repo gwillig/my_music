@@ -1,43 +1,88 @@
 
 import {useState} from "react";
 import React from "react"
+import {Button, Container, Row} from 'react-bootstrap';
 import ReactJkMusicPlayer from 'react-jinke-music-player'
 import 'react-jinke-music-player/assets/index.css'
 import "./styles.css";
+
+
+const playListFocus = [
+  {
+    name: 'Focus_1',
+    singer: 'Jay Chou',
+    cover:
+      '',
+    musicSrc:
+      'https://res.cloudinary.com/gwillig/video/upload/v1629020742/music/focus_4_1.mp3',
+  },
+]
+
+const playListSleep= [
+  {
+    name: 'Focus_1',
+    singer: 'Jay Chou',
+    cover:
+      '',
+    musicSrc:
+      'https://res.cloudinary.com/gwillig/video/upload/v1629020742/music/focus_4_1.mp3',
+  },
+]
+
+const playListRelax = [
+  {
+    name: 'Focus_1',
+    singer: 'Jay Chou',
+    cover:
+      '',
+    musicSrc:
+      'http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3',
+  },
+]
+
 
 class App extends React.Component{
 
     constructor() {
         super();
+        this.onChangePlayList = this.onChangePlayList.bind(this)
         this.state={
-            audioList:[
-                        {
-                        name: 'Viva la vida',
-                        singer: 'Coldplay',
-                        musicSrc:'https://res.cloudinary.com/dvwayyj5d/video/upload/v1617727988/Coldplay_-_Viva_La_Vida_wethoj.mp3'
-                      },
-                        {
-                           name: 'The Scientist',
-                           singer: 'Coldplay',
-                           musicSrc:'https://res.cloudinary.com/dvwayyj5d/video/upload/v1617727983/Coldplay_-_The_Scientist_jbyuef.mp3'
-                         }, {
-                           name: 'Hymn For The Weekend',
-                           singer: 'Coldplay',
-                           musicSrc:'https://res.cloudinary.com/dvwayyj5d/video/upload/v1617727974/Coldplay_-_Hymn_For_The_Weekend_Official_Video_tbwvcs.mp3'
-                         } ,  {
-                           name: 'A Sky Full Of Stars',
-                           singer: 'Coldplay',
-                           musicSrc:'https://res.cloudinary.com/dvwayyj5d/video/upload/v1617727963/Coldplay_-_A_Sky_Full_Of_Stars_szf5aw.mp3'
-                         }
-                     ]
+            audioList: playListFocus
         }
     }
+      onChangePlayList = (playListName) => {
+            this.setState({audioList:playListName})
+      }
   render(){
 
         const {audioList} = this.state
         return (
             <div className="App">
-             <ReactJkMusicPlayer mode="full" audioLists={audioList}/>
+             <Container fluid className="align-middle " >
+                 <Row className="justify-content-md-center">
+                     <Button type="button" onClick={()=>this.onChangePlayList(playListFocus)}>
+                        Playlist: Focus
+                  </Button>
+                 </Row>
+                  <Row className="justify-content-md-center p-3">
+                     <Button type="button" onClick={()=>this.onChangePlayList(playListSleep)}>
+                        Playlist: Sleep
+                  </Button>
+                 </Row>
+                  <Row className="justify-content-md-center" p-3>
+                     <Button type="button" onClick={()=>this.onChangePlayList(playListRelax)}>
+                        Playlist: Relax
+                  </Button>
+                 </Row>
+             </Container>
+
+
+             <ReactJkMusicPlayer
+                 clearPriorAudioLists={true}
+                 quietUpdate="false"
+                 autoPlay="false"
+                 mode="full"
+                 audioLists={audioList}/>
             </div>
       )
     }
