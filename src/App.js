@@ -54,7 +54,7 @@ class App extends React.Component{
                      Object.keys(MusicRecord).map(el=>{
                     return(
                      <Row className="justify-content-center pt-3">
-                         <Button key={el} type="button" onClick={()=>this.onChangePlayList(MusicRecord[el])}>
+                         <Button className="btnGenre" key={el} type="button" onClick={()=>this.onChangePlayList(MusicRecord[el])}>
                             Playlist: {el}
                       </Button>
                      </Row>
@@ -67,8 +67,11 @@ class App extends React.Component{
                  clearPriorAudioLists={true}
                  quietUpdate={false}
                  autoPlay={false}
-                 mode="mini"
+                 remember={true}
+                 mode="omitted"
                  audioLists={audioList}/>
+                 showMiniProcessBar={true}
+                showMediaSession={true}
             </div>
       )
     }
