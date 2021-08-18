@@ -45,8 +45,8 @@ class App extends React.Component{
     render(){
         const {audioList, MusicRecord} = this.state
         return (
-            <div className="App">
-             <Container  className="align-middle " >
+            <div className="App" style={{marginTop:"20px"}}>
+             <Container className="align-middle " >
                  <Row className="justify-content-center pt-3">
                      <h1 className="display-3" style={{color:"white"}}>My Music</h1>
                  </Row>
@@ -69,9 +69,11 @@ class App extends React.Component{
                  autoPlay={false}
                  remember={true}
                  mode="omitted"
-                 audioLists={audioList}/>
+                 audioLists={audioList}
                  showMiniProcessBar={true}
-                showMediaSession={true}
+                 showMediaSession={true}
+             />
+
             </div>
       )
     }
