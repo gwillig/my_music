@@ -65,7 +65,7 @@ class App extends React.Component{
 
              <ReactJkMusicPlayer
                  clearPriorAudioLists={true}
-                 defaultPosition={{bottom:20,right:15}}
+                 defaultPosition={{bottom:200,left:40}}
                  quietUpdate={false}
                  autoPlay={true}
                  mode="omitted"
