@@ -46,6 +46,7 @@ class App extends React.Component{
         const {audioList, MusicRecord} = this.state
         return (
             <div className="App" style={{marginTop:"20px"}}>
+
              <Container className="align-middle " >
                  <Row className="justify-content-center pt-3">
                      <h1 className="display-3" style={{color:"white"}}>My Music</h1>
@@ -62,7 +63,6 @@ class App extends React.Component{
                  })}
              </Container>
 
-
              <ReactJkMusicPlayer
                  clearPriorAudioLists={true}
                  defaultPosition={{bottom:250,left:120}}
@@ -70,8 +70,9 @@ class App extends React.Component{
                  autoPlay={true}
                  mode="omitted"
                  audioLists={audioList}
-                 showMiniProcessBar={true}
+
                  showMediaSession={true}
+                 preload={true}
              />
 
 

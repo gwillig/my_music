@@ -5,6 +5,8 @@
 
 .btnGenre{
 	width: 75% !important;
+    background-color: #0079bf73;
+    border: none;
 }
 
 html {

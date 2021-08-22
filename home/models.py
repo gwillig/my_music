@@ -9,5 +9,6 @@ class MusicRecord(models.Model):
     link = models.TextField()
     source = models.TextField(blank=True)
 
+
     def __str__(self):
         return f'{self.title}'
