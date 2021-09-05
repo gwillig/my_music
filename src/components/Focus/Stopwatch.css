@@ -7,12 +7,12 @@
 
 .stopwatch__history{
     color: aliceblue;
-    font-size: 30px;
+    font-size: 15px;
 
 }
 
 
-.stopUhrBtn{
+#dropdown-basic, .stopUhrBtn{
     color: #fff;
     background-color:  #0079bf73;
     margin-top: 5px;
@@ -20,7 +20,7 @@
     height: 50px
 }
 
-.stopUhrBtn:hover {
+#dropdown-basic:hover, .stopUhrBtn:hover {
     color: #fff;
     background-color: #0b5ed7;
     border-color: #0a58ca;
