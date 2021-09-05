@@ -1,7 +1,7 @@
 
 .stopwatch__display {
     color: aliceblue;
-    font-size: 80px;
+    font-size: 50px;
 
 }
 
@@ -9,4 +9,19 @@
     color: aliceblue;
     font-size: 30px;
 
+}
+
+
+.stopUhrBtn{
+    color: #fff;
+    background-color:  #0079bf73;
+    margin-top: 5px;
+    width: 100%;
+    height: 50px
+}
+
+.stopUhrBtn:hover {
+    color: #fff;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
 }

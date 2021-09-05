@@ -78,7 +78,7 @@ class StopwatchHistory extends React.Component {
             <Dropdown.Item onClick={this.setMode}>Leisure</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <button onClick={this.saveTime}>SAVE TIME</button>
+        <button className="stopUhrBtn" onClick={this.saveTime}>SAVE TIME</button>
         <h3>History</h3>
         <ul>
           {this.state.history.map((item, index) => <li key={index}>{item}</li>)}
