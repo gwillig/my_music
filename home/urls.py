@@ -22,11 +22,10 @@ from django.views.generic.base import RedirectView
 from django.contrib.staticfiles.storage import staticfiles_storage
 
 
-
-
 urlpatterns = [
-
-    path("api/data", views.all_record, name="all_records")
-
+    path("api/data", views.all_record, name="all_records"),
+    path("api/time-records", views.time_record_list, name="time_record_list"),
+    path("api/time-records-today", views.time_record_today, name="time_record_list"),
+    path("api/time-records-create", views.time_record_create, name="time_record_create")
 ]
 

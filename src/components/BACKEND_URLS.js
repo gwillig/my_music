@@ -1,0 +1,5 @@
+export const BASE_URL = window.location.origin + "/api/"
+export const GET_DATA =  BASE_URL + "data"
+export const POST_TIME_RECORD =  BASE_URL + "time-records-create"
+export const TIME_RECORD_LIST =  BASE_URL + "time-records"
+export const TIME_RECORD_TODAY =  BASE_URL + "time-records-today"
