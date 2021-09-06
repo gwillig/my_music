@@ -24,13 +24,9 @@ class Stopwatch extends React.Component {
 
     this.state = {
       startTime:undefined,
-      endTime:"",
+      endTime:undefined,
       running: false,
       currentDuration:"00:00:00",
-      currentTimeMs: 0,
-      currentTimeSec: 0,
-      currentTimeMin: 0,
-      currentTimeHour: 0,
     };
   }
 
@@ -49,7 +45,6 @@ class Stopwatch extends React.Component {
      if (!this.state.running) {
       //Sets only a new startTime
       if (this.state.startTime){
-
         const {endTime} = this.state
         const previousDuration = endTime - this.state.startTime
         const newStartTime = new Date()-previousDuration
@@ -58,14 +53,12 @@ class Stopwatch extends React.Component {
       else{
         this.setState({ running: true, startTime:new Date() });
       }
-
       this.watch = setInterval(() => this.pace(), 100);
     }
   };
 
   stop = () => {
     this.setState({ running: false});
-
     clearInterval(this.watch);
   };
 
@@ -77,28 +70,10 @@ class Stopwatch extends React.Component {
       currentDuration:timeDistance(endTime,startTime),
       endTime:endTime
     })
-
-    this.setState({ currentTimeMs: this.state.currentTimeMs + 10 });
-    if (this.state.currentTimeMs >= 1000) {
-      this.setState({ currentTimeSec: this.state.currentTimeSec + 1 });
-      this.setState({ currentTimeMs: 0 });
-    }
-    if (this.state.currentTimeSec >= 60) {
-      this.setState({ currentTimeMin: this.state.currentTimeMin + 1 });
-      this.setState({ currentTimeSec: 0 });
-    }
-    if (this.state.currentTimeMin >= 60) {
-      this.setState({ currentTimeHour: this.state.currentTimeHour + 1 });
-      this.setState({ currentTimeMin: 0 });
-    }
   };
 
   reset = () => {
     this.setState({
-      currentTimeMs: 0,
-      currentTimeSec: 0,
-      currentTimeMin: 0,
-      currentTimeHour:0,
       startTime: new Date(),
       currentDuration:"00:00:00"
 

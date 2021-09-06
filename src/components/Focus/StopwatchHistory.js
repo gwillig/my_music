@@ -19,7 +19,6 @@ class StopwatchHistory extends React.Component {
         //1.Step: Get the time records for today
         axios.get(TIME_RECORD_TODAY).then(response=>response.data).then(
             data =>{
-
                 const response = data.map(el=>`${el.title} - ${el.date} - ${el.duration}`)
                 this.setState({history:response})
             debugger
@@ -32,7 +31,6 @@ class StopwatchHistory extends React.Component {
     * @description:
         Set the text of clicked button to the component state
     * */
-
     //1.Step: Get text of clicked btn
     const text =  e.target.innerHTML
     //2.Step: Set to state
