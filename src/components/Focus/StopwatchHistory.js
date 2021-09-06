@@ -30,7 +30,7 @@ class StopwatchHistory extends React.Component {
   setMode = (e) =>{
     /*
     * @description:
-        Set the text of clicked button to the component sate
+        Set the text of clicked button to the component state
     * */
 
     //1.Step: Get text of clicked btn
@@ -42,17 +42,13 @@ class StopwatchHistory extends React.Component {
   }
 
   saveTime = () => {
-
-
     //1.Step: Define variables
     const {mode} = this.state
     const date = new Date()
     //2.Step: Create time object to post to backend
     const timeRecord = {}
     timeRecord.title = this.state.mode
-    timeRecord.duration = `${this.props.formatTime(this.props.currentTimeHour)}:${
-                             this.props.formatTime(this.props.currentTimeMin)}:${
-                              this.props.formatTime(this.props.currentTimeSec)}`
+    timeRecord.duration = this.props.currentDuration
     timeRecord.date = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${
                          date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
     axios.post(POST_TIME_RECORD,timeRecord)
@@ -61,6 +57,7 @@ class StopwatchHistory extends React.Component {
     this.setState(prevState => ({
       history: [timeStr,...prevState.history]
     }))
+
   };
 
 

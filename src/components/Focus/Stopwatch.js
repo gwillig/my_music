@@ -4,12 +4,29 @@ import StopwatchDisplay from './StopwatchDisplay';
 import StopwatchHistory from './StopwatchHistory';
 import "./Stopwatch.css"
 
+
+export const timeDistance = (date1, date2) => {
+
+  let distance = Math.abs(date1 - date2);
+  const hours = Math.floor(distance / 3600000);
+  distance -= hours * 3600000;
+  const minutes = Math.floor(distance / 60000);
+  distance -= minutes * 60000;
+  const seconds = Math.floor(distance / 1000);
+  debugger
+  return `${('0' + hours).slice(-2)}:${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`;
+};
+
+
 class Stopwatch extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      startTime:undefined,
+      endTime:"",
       running: false,
+      currentDuration:"00:00:00",
       currentTimeMs: 0,
       currentTimeSec: 0,
       currentTimeMin: 0,
@@ -29,18 +46,38 @@ class Stopwatch extends React.Component {
   };
 
   start = () => {
-    if (!this.state.running) {
-      this.setState({ running: true });
-      this.watch = setInterval(() => this.pace(), 10);
+     if (!this.state.running) {
+      //Sets only a new startTime
+      if (this.state.startTime){
+
+        const {endTime} = this.state
+        const previousDuration = endTime - this.state.startTime
+        const newStartTime = new Date()-previousDuration
+        this.setState({ running: true, startTime:newStartTime})
+      }
+      else{
+        this.setState({ running: true, startTime:new Date() });
+      }
+
+      this.watch = setInterval(() => this.pace(), 100);
     }
   };
 
   stop = () => {
-    this.setState({ running: false });
+    this.setState({ running: false});
+
     clearInterval(this.watch);
   };
 
   pace = () => {
+    const {startTime} = this.state
+    const endTime = new Date()
+    debugger
+    this.setState({
+      currentDuration:timeDistance(endTime,startTime),
+      endTime:endTime
+    })
+
     this.setState({ currentTimeMs: this.state.currentTimeMs + 10 });
     if (this.state.currentTimeMs >= 1000) {
       this.setState({ currentTimeSec: this.state.currentTimeSec + 1 });
@@ -62,6 +99,9 @@ class Stopwatch extends React.Component {
       currentTimeSec: 0,
       currentTimeMin: 0,
       currentTimeHour:0,
+      startTime: new Date(),
+      currentDuration:"00:00:00"
+
     });
   };
 
