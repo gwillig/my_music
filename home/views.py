@@ -5,11 +5,11 @@ from home.models import MusicRecord, TimeRecord
 from .serializers import TimeRecordSerializer
 from rest_framework.decorators import api_view
 from django.utils.timezone import datetime
+
 # Create your views here.
 
 
 def all_record(request):
-
     '#1.Step: Get all elements'
     list_section = MusicRecord.objects.values_list('section').distinct()
     '#2.Step: Create dict'
@@ -48,3 +48,8 @@ def time_record_create(request):
     else:
         print(serializer.errors)
         return Response({"error": serializer.errors})
+
+
+
+def statistic(request):
+    pass
