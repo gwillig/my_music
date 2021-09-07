@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from rest_framework.response import Response
-from home.models import MusicRecord, TimeRecord
+
 from .serializers import TimeRecordSerializer
 from rest_framework.decorators import api_view
-from django.utils.timezone import datetime
 
+
+from home.models import MusicRecord, TimeRecord
+from django.utils.timezone import datetime
+from django_pandas.io import read_frame
+import pandas as pd
 # Create your views here.
 
 
@@ -50,6 +54,33 @@ def time_record_create(request):
         return Response({"error": serializer.errors})
 
 
+def time_record_stats(request):
+    """
+    @description:
+        Creates an static for each day
 
-def statistic(request):
-    pass
+    """
+    '#1.Step: Get all records'
+    qs = TimeRecord.objects.all()
+    df = read_frame(qs)
+    '#2.Step: Convert to dataframe'
+    s = pd.to_datetime(df['date'])
+    '#3.Step: Round to full days'
+    df["date"] = pd.to_datetime(df['date']).dt.floor('d')
+    '#4.Step: Get all unique days'
+    days = df["date"].unique()
+    '#4.1.Step: Sort days'
+    days_sorted = sorted(days, reverse=True)
+    result = []
+    '#5.Step: Calculate the stats for each day'
+    for el in days_sorted:
+        '#5.1.Step: Sum by title'
+        df_grouped = df[df["date"]==el] .groupby("title").agg(["sum"])
+        '#5.2.Step: Select only the column sum'
+        df_selected = df_grouped["duration"]
+        stats_day = df_selected["sum"].apply(lambda x: str(x).split("days ")[1]).T.to_dict()
+        key = el.strftime("%m/%d/%Y")
+        stats_day["Date"] = key
+        result.append(stats_day)
+
+    return JsonResponse({"result":result})

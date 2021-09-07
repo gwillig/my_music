@@ -21,7 +21,7 @@ class StopwatchHistory extends React.Component {
             data =>{
                 const response = data.map(el=>`${el.title} - ${el.date} - ${el.duration}`)
                 this.setState({history:response})
-            debugger
+
             }
         )
   }

@@ -25,7 +25,7 @@ class Player extends React.Component{
         }
     }
       onChangePlayList = (playListName) => {
-        debugger
+
             this.setState({audioList:playListName})
       }
       handleFetch = ( ) => {

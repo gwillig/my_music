@@ -2,13 +2,15 @@
 import {useState} from "react";
 import React from "react"
 import {Button, Container, Row,Tabs,Tab} from 'react-bootstrap';
-import axios from "axios";
+
 import ReactJkMusicPlayer from 'react-jinke-music-player'
 import 'react-jinke-music-player/assets/index.css'
 import "./components/styles.css";
 import Focus from './components/Focus/Focus'
-import {GET_DATA} from "./BACKEND_URLS"
 import Player from "./components/Player"
+import Stats from "./components/Stats/Stats"
+import {GET_DATA} from "./BACKEND_URLS"
+import axios from "axios";
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
@@ -33,7 +35,7 @@ class App extends React.Component{
                       <Focus></Focus>
                   </Tab>
                   <Tab eventKey="Stats" title="Stats">
-                    Svenja vernaschen
+                        <Stats></Stats>
                   </Tab>
             </Tabs>
             </Container>

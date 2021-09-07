@@ -26,6 +26,7 @@ urlpatterns = [
     path("api/data", views.all_record, name="all_records"),
     path("api/time-records", views.time_record_list, name="time_record_list"),
     path("api/time-records-today", views.time_record_today, name="time_record_list"),
-    path("api/time-records-create", views.time_record_create, name="time_record_create")
+    path("api/time-records-create", views.time_record_create, name="time_record_create"),
+    path("api/time-records-stats", views.time_record_stats, name="time_record_stats")
 ]
 
