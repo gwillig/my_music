@@ -36,6 +36,7 @@ class Stats extends React.Component{
                     <tr>
                       <th>#</th>
                       <th>Focus</th>
+                      <th>Sleep</th>
                       <th>Break</th>
                       <th>Wasted Time</th>
                     </tr>
@@ -47,6 +48,7 @@ class Stats extends React.Component{
                              <tr>
                               <td>{el["Date"]}</td>
                               <td>{el["Focus"]}</td>
+                              <td>{el["Sleep"]}</td>
                               <td>{el["Break"]}</td>
                              <td>{el["Waste time"]}</td>
                             </tr>

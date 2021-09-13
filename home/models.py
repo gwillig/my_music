@@ -19,6 +19,7 @@ class TimeRecord(models.Model):
     title = models.CharField(max_length=100)
     date = models.DateTimeField()
     duration = models.DurationField()
+    note = models.TextField(blank=True)
 
     def __str__(self):
         return f'{self.title} - {self.date}'

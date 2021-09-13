@@ -6,7 +6,7 @@ class DataAdmin(admin.ModelAdmin):
 
 
 class TimeRecordAdmin(admin.ModelAdmin):
-    list_display = ['title', "date", 'duration']
+    list_display = ['title', "date", 'duration', "note"]
 
 admin.site.register(MusicRecord, DataAdmin)
 admin.site.register(TimeRecord, TimeRecordAdmin)

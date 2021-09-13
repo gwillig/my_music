@@ -63,6 +63,7 @@ def time_record_stats(request):
     '#1.Step: Get all records'
     qs = TimeRecord.objects.all()
     df = read_frame(qs)
+    df_full_history = df.copy(deep=True)
     '#2.Step: Convert to dataframe'
     s = pd.to_datetime(df['date'])
     '#3.Step: Round to full days'
@@ -78,9 +79,19 @@ def time_record_stats(request):
         df_grouped = df[df["date"]==el] .groupby("title").agg(["sum"])
         '#5.2.Step: Select only the column sum'
         df_selected = df_grouped["duration"]
-        stats_day = df_selected["sum"].apply(lambda x: str(x).split("days ")[1]).T.to_dict()
+        '#5.3.Step: Calculate percentage'
+        df_grouped["duration_per"] = round(df_grouped["duration"] / df_grouped["duration"].sum()*100)
+        stats_day = df_grouped.apply(lambda row: convertTimeDelta(row["duration"][0], row["duration_per"][0]), axis=1).T.to_dict()
         key = el.strftime("%m/%d/%Y")
         stats_day["Date"] = key
         result.append(stats_day)
-
+    df_grouped["duration"]
     return JsonResponse({"result":result})
+
+
+def convertTimeDelta(timeDelta: object, duration_per: object) -> object:
+    """
+
+    """
+    dateStr = str(timeDelta).split("days ")[1]
+    return dateStr + " - " + str(int(duration_per)) + " %"
