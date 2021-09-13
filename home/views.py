@@ -82,7 +82,7 @@ def time_record_stats(request):
         '#5.3.Step: Calculate percentage'
         df_grouped["duration_per"] = round(df_grouped["duration"] / df_grouped["duration"].sum()*100)
         stats_day = df_grouped.apply(lambda row: convertTimeDelta(row["duration"][0], row["duration_per"][0]), axis=1).T.to_dict()
-        key = el.strftime("%m/%d/%Y")
+        key = el.strftime("%Y/%m/%d - %a")
         stats_day["Date"] = key
         result.append(stats_day)
     df_grouped["duration"]
